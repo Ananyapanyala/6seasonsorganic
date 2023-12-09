@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="productstyles.css">
+</head>
+<body>
+    
+
+    <section id="food-products">
+        <h2>OUR PRODUCTS</h2>
+        <!-- Forest Honey Product -->
+        <div class="product">
+            <h3>Forest Honey</h3>
+            <img src="Honey(250g).jpeg" alt="Forest Honey" width="200px" height="200px">
+            <p class="product-description">Description for Forest Honey</p>
+        
+            <label for="quantityHoney">Quantity:</label>
+            <select id="quantityHoney" onchange="updatePrice('priceHoney')">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <!-- Add more quantity options as needed -->
+            </select>
+        
+            <label for="weightHoney">Weight (in grams):</label>
+            <select id="weightHoney" onchange="updatePrice('priceHoney')">
+                <option value="200">200g</option>
+                <option value="350">350g</option>
+                <option value="500">500g</option>
+                <option value="1000">1000g</option>
+                <!-- Add more weight options as needed -->
+            </select>
+        
+            <p>Price: <span id="priceHoney">300/-</span></p>
+            <button onclick="addToCart({ id: 1, name: 'Forest Honey', price: 300, image: 'Honey(250g).jpeg' })">Add to Cart</button>
+        </div>
+
+<!-- Ghee Product -->
+<div class="product">
+    <h3>Ghee</h3>
+    <img src="Honey(250g).jpeg" alt="Forest Honey" width="200px" height="200px">
+    <p class="product-description">Description for Ghee</p>
+
+    <label for="quantityGhee">Quantity:</label>
+    <select id="quantityGhee" onchange="updatePrice('priceGhee')">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <!-- Add more quantity options as needed -->
+    </select>
+
+    <label for="weightGhee">Weight (in grams):</label>
+    <select id="weightGhee" onchange="updatePrice('priceGhee')">
+        <option value="100">200g</option>
+        <option value="300">350g</option>
+        <option value="300">500g</option>
+        <option value="300">1000g</option>
+        <!-- Add more weight options as needed -->
+    </select>
+
+    <p>Price: <span id="priceGhee">400.00/-</span></p>
+    <button onclick="addToCart({ id: 2, name: 'Ghee', price: 400, image: 'honeypro1.jpg' })">Add to Cart</button>
+</div>
+<!--Henna Powder-->
+<div class="product">
+    <h3>Henna</h3>
+    <img src="Henna(250g).jpeg" alt="Henna" width="200px" height="200px">
+    <p class="product-description">Description for Henna</p>
+
+    <label for="quantityHenna">Quantity:</label>
+    <select id="quantityHenna" onchange="updatePrice('priceHenna')">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <!-- Add more quantity options as needed -->
+    </select>
+
+    <label for="weightHenna">Weight (in grams):</label>
+    <select id="weightHenna" onchange="updatePrice('priceHenna')">
+        <option value="200">200g</option>
+        <option value="350">350g</option>
+        <option value="500">500g</option>
+        <option value="1000">1000g</option>
+        <!-- Add more weight options as needed -->
+    </select>
+
+    <p>Price: <span id="priceHoney">300.00/-</span></p>
+    <button onclick="addToCart({ id: 1, name: 'Henna', price: 300, image: 'Honey(250g).jpeg' })">Add to Cart</button>
+</div>
+<!--Insence sticks-->
+<div class="product">
+    <h3>Incense Sticks</h3>
+    <img src="incensesticks.jpeg" alt="Henna" width="200px" height="200px">
+    <p class="product-description">Description for Henna</p>
+
+    <label for="quantityIncense">Quantity:</label>
+    <select id="quantityIncense" onchange="updatePrice('priceIncense')">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <!-- Add more quantity options as needed -->
+    </select>
+
+    <label for="weightIncense">Weight (in grams):</label>
+    <select id="weightIncense" onchange="updatePrice('priceIncense')">
+        <option value="200">200g</option>
+        <option value="350">350g</option>
+        <option value="500">500g</option>
+        <option value="1000">1000g</option>
+        <!-- Add more weight options as needed -->
+    </select>
+
+    <p>Price: <span id="priceIncense">300.00/-</span></p>
+    <button onclick="addToCart({ id: 1, name: 'Incense', price: 300, image: 'Incensesticks.jpeg' })">Add to Cart</button>
+</div>
+<script>
+
+        function addToCart(product, productName) {
+            const selectedQuantity = document.getElementById(`quantity${productName}`).value;
+            const selectedWeight = document.getElementById(`weight${productName}`).value;
+
+            const cartItem = {
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                selectedQuantity,
+                selectedWeight
+            };
+
+            let shoppingCart = JSON.parse(localStorage.getItem('cart')) || [];
+            shoppingCart.push(cartItem);
+
+            localStorage.setItem('cart', JSON.stringify(shoppingCart));
+            renderCart(); // Call function to render updated cart items
+        }
+
+       
+function updatePrice(priceId) {
+                const quantity = parseFloat(document.getElementById(`quantity${priceId.substring(5)}`).value) || 1;
+                const weight = parseFloat(document.getElementById(`weight${priceId.substring(5)}`).value) || 1;
+                const priceElement = document.getElementById(priceId);
+
+                // Define the unit prices for each product
+                const unitPrices = {
+                    Honey: 1000, // Set the correct unit price for Honey
+                    Ghee: 1000,
+                    Henna:1000 // Set the correct unit price for Ghee
+                    // Add more products if needed
+                };
+
+                // Get the product name from the priceId
+                const productName = priceId.substring(5);
+
+                // Calculate the total price based on the selected quantity, weight, and unit price
+                const totalPrice = unitPrices[productName] * quantity * (weight / 1000);
+                priceElement.textContent = totalPrice.toFixed(2) + "/-"; // Display the total price
+            }
+
+</script>
+
+<script src="script.js"></script>
+   
+</body>
+</html>

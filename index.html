@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>6 seasons</title>
+   <link rel="stylesheet" href="style.css">
+   
+   <style>
+    body {
+         font-family: Arial, sans-serif;
+         margin: 0;
+         padding: 0;
+         background-color: #f5f5f5;
+         color: #333;
+      }
+     
+
+      header {
+         position: fixed;
+         top: 0;
+         width: 100%;
+         background-color: #fff; /* Change this to the desired background color */
+         z-index: 1000; /* Ensure it stays on top of other elements */
+      }
+
+      .navbar {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 20px;
+      }
+
+      .logo img {
+         width: 100px; /* Adjust as needed */
+         height: auto;
+      }
+
+      .menu {
+         list-style: none;
+         display: flex;
+         gap: 20px;
+      }
+      .menu li {
+         position: relative;
+      }
+      
+      header {
+         background-color: var(--primary-color);
+         color: #fff;
+         padding: 20px 0;
+         text-align: center;
+      }
+
+      header ul {
+         list-style: none;
+         padding: 0;
+         margin: 0;
+      }
+
+      header ul li {
+         display: inline-block;
+         margin: 0 15px;
+      }
+
+      header ul li a {
+         color: black;
+         text-decoration: none;
+         font-weight: bold;
+         transition: color 0.3s;
+      }
+
+      header ul li a:hover {
+         color: var(--button-hover-color);
+      }
+
+      /* Main Content Section */
+      
+      
+      .dropdown-content {
+         display: none;
+         position: absolute;
+         top: 40px;
+         left: 0;
+         background-color: #fff; /* Dropdown background color */
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+         z-index: 1001; /* Ensure it's higher than the header */
+         padding: 10px;
+         width:120px;
+      }
+
+      .menu li:hover .dropdown-content {
+         display: block;
+      }
+
+      .dropdown-content li {
+         margin-top: 5px; /* Adjust as needed */
+      }
+      /* Basic styling for the product cards */
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.product-card {
+  border: 1px solid #ccc; /* Border for the rectangular container */
+  border-radius: 10px; /* Rounded corners for the rectangle */
+  overflow: hidden; /* Clip the content within the rectangle */
+  width: 200px; /* Adjust the width of the rectangle */
+}
+
+.product-image {
+  text-align: center;
+}
+
+.product-image img {
+  border-radius: 50%; /* Makes the image circular */
+  width: 100px; /* Adjust the size of the circular image */
+  height: 100px;
+  margin: 20px auto; /* Adjust the margin to center the circular image */
+}
+
+.product-info {
+  padding: 20px;
+  text-align: center;
+}
+.specialties-section {
+  padding: 50px 0;
+  background-color:white;
+  text-align: center;
+}
+
+.specialties-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.specialty-card:hover {
+  transform: translateY(-5px);
+}
+
+.specialty-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid black;
+}
+
+.specialty-info {
+  padding: 20px;
+}
+
+.specialty-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.specialty-info p {
+  color: #666;
+}
+
+.specialty-info button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.specialty-info button:hover {
+  background-color: #45a049;
+}
+.specialty-item {
+        /* Adjust styles as needed for the rectangular container */
+        width: 30%;
+        margin-bottom: 30px;
+        height: 350px; /* Fixed height for each specialty card */
+        border: 1px solid black; /* Border for the rectangular container */
+        border-radius: 8px; /* Rounded corners for the rectangle */
+        overflow: hidden; /* Clip the content within the rectangle */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color:yellowgreen;
+      }
+
+     
+        .circular-container {
+            width: 150px; /* Set the container width */
+            height: 150px; /* Set the container height */
+            display: flex;
+            justify-content: center;
+            align-items: middle;
+           
+        }
+
+        .circular-image {
+            width: 100px; /* Set the desired width */
+            height: 100px; /* Set the desired height */
+            border-radius: 50%; /* Makes the image round */
+            overflow: hidden; /* Hides the overflow content */
+        }
+
+        .circular-image img {
+            width: 100%; /* Ensures the image takes up the entire circular area */
+            height: 100%; /* Ensures the image takes up the entire circular area */
+            object-fit: cover; /* Keeps the aspect ratio and covers the entire circle */
+        }
+.inner-circle {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc; /* Adding a border for visualization */
+        }
+
+        .inner-circle img {
+            width: 250px;;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        /* Additional Info Styling */
+.specialty-info {
+  display: none; /* Initially hide additional info */
+  padding: 20px;
+  text-align: left;
+  background-color: #fff; /* Background color for additional info */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.specialty-card:hover .specialty-info {
+  display: block; /* Show additional info on hover */
+}
+
+.specialty-info h4 {
+  margin-top: 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.specialty-info p {
+  color: #666;
+}
+/* Styling for left and right images */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.left img,
+.right img {
+    max-width: 100%; /* Adjust the image width */
+    height: auto;
+    border-radius: 5px; /* Optional: Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow effect */
+    /* Additional styling for images */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* For mobile view, stack images on top of each other */
+    }
+}
+.footer {
+         background-color:aquamarine;
+         padding: 40px 0;
+      }
+
+      .footer-columns {
+         display: flex;
+         justify-content: space-between;
+      }
+
+      .footer-column {
+         flex: 1;
+         margin-right: 20px;
+      }
+
+      .footer-heading {
+         font-weight: bold;
+         margin-bottom: 10px;
+      }
+
+      .footer-links li {
+         list-style: none;
+         margin-bottom: 8px;
+      }
+
+      .footer-links a {
+         text-decoration: none;
+         color: #333;
+      }
+
+      .footer-contact-info {
+         margin-top: 20px;
+      }
+
+      .footer-contact-info p {
+         margin-bottom: 8px;
+      }
+
+      .footer-social {
+         margin-top: 20px;
+      }
+
+      .footer-social a {
+         display: inline-block;
+         width: 30px;
+         height: 30px;
+        
+         
+         text-align: center;
+         line-height: 30px;
+         border-radius: 50%;
+         margin-right: 10px;
+      }
+footer {
+    background-color: #f5f5f5;
+    padding: 20px 0;
+    text-align: center;
+    color:goldenrod;
+    font-size: 14px;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.copyright p {
+    margin: 0;
+}
+
+
+.container1 {
+    width: 100%;
+    position:relative;
+    top: 50px; /* Adjust this value to position the image below the navbar */
+    bottom: 150px;
+    margin-top: -100px; /* Use a negative margin to keep the layout intact */
+    margin-bottom: 100px;
+}
+
+.background-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.pro-section {
+  padding: 50px 0;
+  background-color:white;
+  text-align: center;
+}
+
+.pro-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.pro-card:hover {
+  transform: translateY(-5px);
+}
+
+.pro-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid black;
+}
+
+.pro-info {
+  padding: 20px;
+}
+
+.pro-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.pro-info p {
+  color: black;
+}
+
+.pro-info button {
+  padding: 8px 16px;
+  border: none;
+  background-color:yellow;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.pro-info button:hover {
+  background-color: #45a049;
+}
+.pro-item {
+        /* Adjust styles as needed for the rectangular container */
+        width: 30%;
+        margin-bottom: 30px;
+        height: 350px; /* Fixed height for each specialty card */
+        border: 1px solid black; /* Border for the rectangular container */
+        border-radius: 8px; /* Rounded corners for the rectangle */
+        overflow: hidden; /* Clip the content within the rectangle */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color:yellowgreen;
+      }
+      .purchase-dialog {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 1); /* Change this value to adjust opacity */
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+        /* Styles for product image */
+        .product-image {
+            width: 50px; /* Adjust the image size */
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Styles for "View More" link */
+        .view-more-link {
+            color:green;
+            cursor: pointer;
+        }
+
+        /* Styles for the buyers list */
+        .buyers-list {
+            display: relative;
+            margin-top: 5px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for the close button */
+        .close {
+            float: right;
+            cursor: pointer;
+        }
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+ </style>
+</head>
+<body>
+    <div class="container1">
+        <img src="bckg.jpeg" alt="Background" class="background-image" height="200px" width="1800px">
+    </div>
+   
+    
+    <div class="purchase-dialog" id="purchaseDialog" style="display:none;">
+        <!-- Content will be updated dynamically -->
+    </div>
+    <div id="welcomeModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Welcome!</h2>
+        <p>Great to see you on our website!</p>
+    </div>
+    <button id="scrollTopBtn" onclick="scrollToTop()">Top</button>
+   <header>
+    
+      <nav class="navbar">
+         <div class="logo">
+            <img src="logo.jpeg" width="100" height="100">
+         </div>
+         <ul class="menu">
+            <li><a href="#index-section">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">About Us</a>
+                <div class="dropdown-content">
+                   <a href="#about-section">6 Seasons</a>
+                   <a href="#our-story">Our Story</a>
+                   <a href="#our-values">Our Values</a>
+                   <a href="#meet-the-team">Meet Our Team</a>
+                </div>
+             </li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html">Shopping cart</a></li>
+         </ul>
+      </nav>
+      
+   </header>
+   <!-- ... (previous HTML code) ... -->
+   <section class="pro-section">
+    <h2>OUR FEATURED PRODUCTS</h2>
+    <div class="pro-container">
+      <div class="pro-item">
+        <div class="pro-card">
+            <h2>Pulses & Spices</h2>
+          <div class="circular-image">
+            <img src="organicsourcing.jpg" alt="Organic Sourcing" width=2px height=2px>
+          </div>
+          <div class="pro-info">
+            <p>Discover our commitment to sourcing the finest organic ingredients, ensuring sustainability and quality.</p>
+            <button class="toggle-info" >
+                    <a href="products.html">Shop Now</a></button>
+          </div>
+        </div>
+      </div>
+      <div class="pro-item">
+        <div class="pro-card">
+            <h2>Natural Bio Products</h2>
+          <div class="circular-image">
+            <img src="pack.jpeg" alt="Eco-friendly Packaging">
+          </div>
+          <div class="pro-info">
+            
+            <p>Explore our eco-conscious packaging solutions, contributing to a greener planet with biodegradable materials.</p>
+            <button class="toggle-info">
+                    <a href="products.html">Shop Now</a></button>
+          </div>
+        </div>
+      </div>
+      <div class="pro-item">
+        <div class="pro-card">
+            <h2>Pooja Essentials</h2>
+          <div class="circular-image">
+            <img src="pa.jpg" alt="Sustainable Practices">
+          </div>
+          <div class="pro-info">
+            
+            <p>Experience our sustainable production methods that prioritize reduced waste and energy efficiency.</p>
+            <button class="toggle-info">
+                    <a href="products.html">Shop Now</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="specialties-section">
+    <h2>OUR FEATURES</h2>
+    <div class="specialties-container">
+      <div class="specialty-item">
+        <div class="specialty-card">
+            <h2>Organic Sourcing</h2>
+          <div class="circular-image">
+            <img src="organicsourcing.jpg" alt="Organic Sourcing" width=2px height=2px>
+          </div>
+          <div class="specialty-info">
+            <p>Discover our commitment to sourcing the finest organic ingredients, ensuring sustainability and quality.</p>
+            <button class="toggle-info">Learn More</button>
+                    <div class="additional-info" style="display: none;">
+                        <h4>Why Choose Organic Sourcing?</h4>
+                        <p>Our organic sourcing practices prioritize:</p>
+                        <ul>
+                            <li>Locally grown organic produce</li>
+                            <li>Quality checks and certifications</li>
+                            <li>Fair trade and ethical partnerships</li>
+                        </ul>
+                        <p>Through these efforts, we ensure the highest quality and sustainability in every product we offer.</p>
+                    </div>
+          </div>
+        </div>
+      </div>
+      <div class="specialty-item">
+        <div class="specialty-card">
+            <h2>Eco-friendly Packaging</h2>
+          <div class="circular-image">
+            <img src="pack.jpeg" alt="Eco-friendly Packaging">
+          </div>
+          <div class="specialty-info">
+            
+            <p>Explore our eco-conscious packaging solutions, contributing to a greener planet with biodegradable materials.</p>
+            <button class="toggle-info">Learn More</button>
+                    <div class="additional-info" style="display: none;">
+                        <h4>Our Approach to Eco-friendly Packaging</h4>
+                        <p>We're committed to:</p>
+                        <ul>
+                            <li>Using recyclable and biodegradable materials</li>
+                            <li>Reducing waste in the packaging process</li>
+                            <li>Constantly innovating for sustainable packaging options</li>
+                        </ul>
+                        <p>This ensures that our packaging aligns with our dedication to environmental sustainability.</p>
+                    </div>
+          </div>
+        </div>
+      </div>
+      <div class="specialty-item">
+        <div class="specialty-card">
+            <h2>Sustainable Practices</h2>
+          <div class="circular-image">
+            <img src="pa.jpg" alt="Sustainable Practices">
+          </div>
+          <div class="specialty-info">
+            
+            <p>Experience our sustainable production methods that prioritize reduced waste and energy efficiency.</p>
+            <button class="toggle-info">Learn More</button>
+                    <div class="additional-info" style="display: none;">
+                        <h4>Our Commitment to Sustainability</h4>
+                        <p>We focus on:</p>
+                        <ul>
+                            <li>Energy-efficient manufacturing processes</li>
+                            <li>Reducing carbon footprint through responsible practices</li>
+                            <li>Constantly innovating for sustainable production</li>
+                        </ul>
+                        <p>These efforts reflect our dedication to environmental responsibility in every aspect of our operations.</p>
+                    </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ... (remaining HTML code) ... -->
+  
+
+    
+   <section id="index-section" class="home">
+    <div class="container">
+        <div class="intro">
+            <h1>Welcome to 6 Seasons</h1>
+            <p>Your Source for Premium Organic Products</p>
+        </div>
+        <div class="featured-products" style="background-image: url('organic.jpg'); padding: 80px 0; background-size: cover; background-position: center;">
+            <h2>Featured Products</h2>
+            <div class="product">
+                
+                <img src="honey.jpg" alt="Product 1" width="200" height="200">
+                <h3>Organic Foods</h3>
+                <p>Boost your health with our nutrient-packed superfood blend.</p>
+                <a href="products.html" class="explore-btn">Explore</a>
+            </div>
+            
+            <div class="product">
+                <img src="cosemtics.jpg" alt="Product 2" width="250" height="300">
+                <h3>Natural Skincare Collection</h3>
+                <p>Revitalize your skin with our organic skincare products.</p>
+                <a href="products.html" class="explore-btn">Explore</a>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<section id="about-section" class="about-us" style="background-image: url('aboutusbg.png'); padding: 80px 0; background-size: cover; background-position: center;">
+    <div class="container">
+        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px; font-size: 36px;">About 6 Seasons</h2>
+        <div class="content" style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="left" style="width: 48%; text-align: left;">
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                    At 6 Seasons, we are dedicated to providing you with the finest organic products sourced directly from nature. Our unwavering commitment to purity, quality, and sustainability sets us apart in the industry. We believe that what you put in and on your body should be as pure and natural as intended by the world.
+                </p>
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color);">
+                    Our journey commenced in 2023 with a group of passionate individuals sharing a profound love for nature and a belief in the transformative power of organic ingredients.
+                </p>
+            </div>
+           
+            </div>
+        </div>
+    </div>
+</section>
+
+   
+
+<section id="our-story" class="about-us" style="background-color: #f9f9f9; padding: 80px 0;">
+    <div class="container">
+        
+        <div class="content" style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="left" style="width: 48%; text-align: left;">
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                    Our journey began with a simple idea – to make wholesome, organic products accessible to everyone. It all started in 2023, when a group of like-minded individuals came together with a shared love for nature and a deep appreciation for the healing power of organic ingredients.
+                </p>
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color);">
+                    As we grew, we remained committed to our core values.
+                </p>
+            </div>
+            <div class="content">
+            <div class="left" style="width: 48%;">
+                <img src="ourstory.jpeg" alt="Our Story" style="max-width: 100%; height: auto; border: 4px solid #007acc; box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);">
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="our-values" class="about-us" style="background-color: #f9f9f9; padding: 80px 0;">
+    <div class="container">
+        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px; font-size: 36px;">Our Values</h2>
+        <div class="content" style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="left" style="width: 48%; text-align: left;">
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                    Our commitment to quality and sustainability is at the core of everything we do. We believe in a harmonious relationship with the environment and strive to reduce our carbon footprint and minimize waste in every aspect of our business, from packaging to shipping.
+                </p>
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color);">
+                    We cherish the connection we have with our customers. 6seasonsorganic is not just a place to shop; it's a community that shares information, recipes, and wellness tips.
+                </p>
+            </div>
+            <div class="content">
+            <div class="right" style="width: 48%;">
+                <img src="ourvalues.jpg" alt="Our Values" style="max-width: 100%; height: auto; border: 4px solid #007acc; box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);">
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="meet-the-team" class="about-us" style="background-color: #f9f9f9; padding: 80px 0;">
+    <div class="container">
+        <h2 style="text-align: center; color: var(--primary-color); margin-bottom: 40px; font-size: 36px;">Meet the Team</h2>
+        <div class="content" style="display: flex; justify-content: space-around; align-items: center;">
+            <div class="left" style="width: 48%; text-align: left;">
+                <p style="font-size: 18px; line-height: 1.6; color: var(--text-color); margin-bottom: 20px;">
+                    Our team is composed of dedicated individuals who are passionate about organic living. We are here to assist you with any questions, offer guidance, and ensure your satisfaction. Get to know us better!
+                </p>
+            </div>
+            <div class="left" style="width: 48%;">
+                <img src="prr.jpeg" alt="Meet the Team" style="max-width: 30%; height: auto; border: 4px solid #007acc; box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);">
+                <img src="prr.jpeg" alt="Meet the Team" style="max-width: 30%; height: auto; border: 4px solid #007acc; box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);">
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+       <div class="footer-columns">
+          <div class="footer-column">
+             <div class="footer-heading">Quick Links</div>
+             <ol class="footer-links">
+                <li><a href="#index-section">Home</a></li>
+                <li><a href="#about-section">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+             </ol>
+          </div>
+          <div class="footer-column">
+             <div class="footer-heading">Contact Us</div>
+             <div class="footer-contact-info">
+                <p>Address: </p>
+                <p>Email:6seasonsorganic@gmail.com</p>
+                <p>Phone: +91 9177023999</p>
+             </div>
+          </div>
+          <div class="footer-column">
+             <div class="footer-heading">Follow Us</div>
+             <div class="footer-social">
+                <a href="https://www.facebook.com/people/6-seasons/61552154805127/?sfnsn=wiwspmo&mibextid=vk8aRt" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="#3b5998" d="M11.82 22.9V12h-3.27v-4.64h3.27V6.41c0-3.2 1.95-4.93 4.8-4.93 1.37 0 2.54.1 2.88.15v3.36h-1.97c-1.55 0-1.85.74-1.85 1.83v2.4h3.7l-.48 4.64h-3.22V22.9h-4.2z"/>
+                    </svg>
+                    
+                 </a>
+                <a href="https://twitter.com/i/flow/login?redirect_after_login=%2F6seasonsorganic" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="#1da1f2" d="M22.46 6c-.8.37-1.67.62-2.58.73.93-.55 1.64-1.42 1.97-2.45-.87.52-1.83.9-2.86 1.1a4.356 4.356 0 0 0-7.43 3c0 .34.04.67.13.98-3.62-.18-6.82-1.92-8.96-4.57-.38.65-.6 1.41-.6 2.22 0 1.53.78 2.88 1.97 3.67-.72-.02-1.39-.22-1.98-.54v.06c0 2.14 1.51 3.92 3.51 4.33-.37.1-.76.15-1.17.15-.28 0-.55-.03-.81-.08.55 1.71 2.14 2.96 4.03 2.99-1.48 1.15-3.34 1.83-5.36 1.83-.35 0-.7-.02-1.04-.06 1.91 1.23 4.18 1.95 6.62 1.95 7.94 0 12.28-6.6 12.28-12.29 0-.19 0-.38-.01-.57.84-.61 1.56-1.37 2.13-2.24z"/>
+                    </svg>
+                    
+                </a>
+                <a href="https://www.instagram.com/6_seasons_organic/?hl=en" target="_blank">
+                    <img src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png" alt="Instagram" width="30" height="30">
+                     
+                </a>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<a href="https://www.youtube.com/@6seasonsorganics" target="_blank">
+    <i class="fab fa-youtube" style="color: red; font-size: 36px;"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/6seasons-organic-286223299?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+    <i class="fab fa-linkedin" style="color: #0077B5; font-size: 36px;"></i> <!-- LinkedIn icon -->
+</a>
+
+                <!-- Add other social media icons as needed -->
+             </div>
+          </div>
+       </div>
+    </div>
+    
+ </footer>
+ <footer>
+    <div class="container">
+        <div class="copyright">
+            <p>&copy; 2023 6 SeasonsOrganic.|| Designed by <a href="https://www.ananyareddy.com/" target="_blank">AnanyaReddy</a>| All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+
+   <script>
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+         anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+               window.scrollTo({
+                  top: targetElement.offsetTop,
+                  behavior: 'smooth',
+                  block: 'start'
+               });
+            }
+         });
+      });
+   </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButtons = document.querySelectorAll('.toggle-info');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const infoSection = this.parentNode.querySelector('.additional-info');
+                infoSection.style.display = infoSection.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+    });
+</script>
+<script>
+   const products = [
+        { name: 'Honey',quantity:'250g', price: '200/-', image: 'Honey(250g).jpeg' },
+        { name: 'Henna',quantity:'250g', price: '280/-', image: 'Henna(250g).jpeg' },
+        { name: 'Insence Sticks',quantity:'20pcs' ,price: '60/-', image: 'Incensesticks.jpeg' }
+        // Add more products as needed
+    ];
+
+    // List of buyers
+    const buyers = [
+        'Buyer 1',
+        'Buyer 2',
+        'Buyer 3',
+        'Buyer 4',
+        'Buyer 5'
+        // Add more buyers as needed
+    ];
+
+    // Function to update purchase notification with random product and time
+    function updatePurchaseNotification() {
+        const dialog = document.getElementById('purchaseDialog');
+        const randomProduct = products[Math.floor(Math.random() * products.length)];
+        const randomBuyers = buyers.slice(0, Math.floor(Math.random() * buyers.length) + 1); // Random number of buyers
+
+        const randomTime = Math.floor(Math.random() * (10000 - 3000) + 3000); // Random time between 3 to 10 seconds
+
+        dialog.innerHTML = `
+            <img src="${randomProduct.image}" alt="${randomProduct.name}" class="product-image">
+            Someone purchased ${randomProduct.name} for ${randomProduct.price} ${Math.floor(randomTime / 1000)} seconds ago.
+            <br>
+            <span class="view-more-link" onclick="showBuyers('${randomProduct.name}')">View more</span>
+            <ul class="buyers-list"></ul>
+        `;
+        dialog.style.display = 'block';
+
+        // Hide the dialog after the random time interval
+        setTimeout(function () {
+            dialog.style.display = 'none';
+            // Update the notification again after a random time
+            setTimeout(updatePurchaseNotification, Math.floor(Math.random() * (900000 - 600000) + 5000)); // Random time between 5 to 15 seconds
+        }, randomTime);
+    }
+
+    // Function to display the list of buyers
+    function showBuyers(productName) {
+        const dialog = document.getElementById('purchaseDialog');
+        const buyersList = dialog.querySelector('.buyers-list');
+        const productBuyers = buyers.slice(0, Math.floor(Math.random() * buyers.length) + 1); // Random number of buyers
+
+        buyersList.innerHTML = productBuyers.map(buyer => `<li>${buyer}</li>`).join('');
+        buyersList.style.display = 'block';
+    }
+   
+    // Initial call to start displaying purchase notifications
+    updatePurchaseNotification();
+    function displayModal() {
+        document.getElementById('welcomeModal').style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        document.getElementById('welcomeModal').style.display = 'none';
+    }
+
+    // Check if this is the first visit
+    if (localStorage.getItem('visited') !== 'yes') {
+        displayModal();
+        localStorage.setItem('visited', 'yes');
+    }
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to display the scroll top button on scroll
+    window.onscroll = function() {
+        scrollFunction();
+    };
+
+    function scrollFunction() {
+        var topButton = document.getElementById("scrollTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            topButton.style.display = "block";
+        } else {
+            topButton.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

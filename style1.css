@@ -1,0 +1,9 @@
+.navbar {
+    display:contents; /* Changed to "flex" to align items properly */
+    justify-content: space-between; /* Spaced out logo and menu */
+    align-items:normal;
+    padding: 100px; /* Adjusted padding for better spacing */
+    background-color: white; /* Set the background color of the navigation bar */
+    margin:10px;
+ }
+ 

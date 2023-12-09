@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+</head>
+<body>
+    <div id="cartDetails">
+        <p><strong>SHOPPING CART</strong></p>
+    </div>
+    <div id="cartItems"></div>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="checkout()">Checkout</button>
+
+   <!-- ... (previous HTML code) ... -->
+
+<!-- ... (previous HTML code) ... -->
+
+<script>
+    function displayCartItems() {
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartContainer = document.getElementById('cartItems');
+        cartContainer.innerHTML = '';
+
+        cartItems.forEach(item => {
+            let cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+
+            let itemName = document.createElement('p');
+            itemName.textContent = `Name: ${item.name}`;
+
+            let itemQuantity = document.createElement('p');
+            itemQuantity.textContent = `Quantity: ${item.selectedQuantity}`;
+
+            let itemWeight = document.createElement('p');
+            itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
+
+            // Append these elements to the cartItem div as needed
+            cartItem.appendChild(itemName);
+            cartItem.appendChild(itemQuantity);
+            cartItem.appendChild(itemWeight);
+
+            cartContainer.appendChild(cartItem);
+        });
+    }
+
+    // Function to remove an item from the cart
+    function removeFromCart(id) {
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        let updatedCart = cartItems.filter(item => item.id !== id);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        displayCartItems();
+    }
+
+    // Function to clear the cart
+    function clearCart() {
+        localStorage.removeItem('cart');
+        displayCartItems();
+    }
+
+    displayCartItems(); // Call the function to display cart items initially
+</script>
+
+<!-- ... (rest of the HTML) ... -->
+
+
+<!-- ... (rest of the HTML) ... -->
+
+</body>
+</html>
