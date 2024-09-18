@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay Script -->
 </head>
 <body>
     <div id="cartDetails">
@@ -11,59 +14,79 @@
     <button onclick="clearCart()">Clear Cart</button>
     <button onclick="checkout()">Checkout</button>
 
-   <!-- ... (previous HTML code) ... -->
+    <script>
+        // Your existing displayCartItems function and other cart logic
+        function displayCartItems() {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cartItems');
+            cartContainer.innerHTML = '';
 
-<!-- ... (previous HTML code) ... -->
+            cartItems.forEach(item => {
+                let cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
 
-<script>
-    function displayCartItems() {
-        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        let cartContainer = document.getElementById('cartItems');
-        cartContainer.innerHTML = '';
+                let itemName = document.createElement('p');
+                itemName.textContent = `Name: ${item.name}`;
 
-        cartItems.forEach(item => {
-            let cartItem = document.createElement('div');
-            cartItem.classList.add('cart-item');
+                let itemQuantity = document.createElement('p');
+                itemQuantity.textContent = `Quantity: ${item.selectedQuantity}`;
 
-            let itemName = document.createElement('p');
-            itemName.textContent = `Name: ${item.name}`;
+                let itemWeight = document.createElement('p');
+                itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
 
-            let itemQuantity = document.createElement('p');
-            itemQuantity.textContent = `Quantity: ${item.selectedQuantity}`;
+                cartItem.appendChild(itemName);
+                cartItem.appendChild(itemQuantity);
+                cartItem.appendChild(itemWeight);
 
-            let itemWeight = document.createElement('p');
-            itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
+                cartContainer.appendChild(cartItem);
+            });
+        }
 
-            // Append these elements to the cartItem div as needed
-            cartItem.appendChild(itemName);
-            cartItem.appendChild(itemQuantity);
-            cartItem.appendChild(itemWeight);
+        // Clear the cart
+        function clearCart() {
+            localStorage.removeItem('cart');
+            displayCartItems();
+        }
 
-            cartContainer.appendChild(cartItem);
-        });
-    }
+        // Checkout function to integrate Razorpay
+        function checkout() {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Function to remove an item from the cart
-    function removeFromCart(id) {
-        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-        let updatedCart = cartItems.filter(item => item.id !== id);
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-        displayCartItems();
-    }
+            if (cartItems.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
 
-    // Function to clear the cart
-    function clearCart() {
-        localStorage.removeItem('cart');
-        displayCartItems();
-    }
+            // Calculate total amount in paise (1 INR = 100 paise)
+            let totalAmount = cartItems.reduce((total, item) => total + (item.selectedQuantity * item.price), 0) * 100;
 
-    displayCartItems(); // Call the function to display cart items initially
-</script>
+            var options = {
+                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Razorpay Test Key ID
+                "amount": totalAmount, // Amount in paise
+                "currency": "INR",
+                "name": "6Seasons Organic",
+                "description": "Order Payment",
+                "image": "https://example.com/logo.png", // Optional, add your logo here
+                "handler": function (response) {
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    // Clear the cart after successful payment
+                    clearCart();
+                },
+                "prefill": {
+                    "name": "Your Customer's Name",
+                    "email": "customer_email@example.com",
+                    "contact": "9999999999"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
 
-<!-- ... (rest of the HTML) ... -->
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
 
-
-<!-- ... (rest of the HTML) ... -->
-
+        displayCartItems(); // Call the function to display cart items initially
+    </script>
 </body>
 </html>
