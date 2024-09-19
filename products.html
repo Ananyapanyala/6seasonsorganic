@@ -3,105 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products</title>
-    <link rel="stylesheet" href="productstyles.css">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="productstyles1.css">
 </head>
 <body>
 
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-home-button">Back to Home</a>
+
+    <!-- Products Section -->
     <section id="food-products">
         <h2>OUR PRODUCTS</h2>
 
-        <div class="product-container">
-            <!-- Forest Honey Product -->
-            <div class="product">
-                <h3>Forest Honey</h3>
-                <img src="Honey(250g).jpeg" alt="Forest Honey">
-                <p class="product-description">Description for Forest Honey</p>
-                <label for="quantityHoney">Quantity:</label>
-                <select id="quantityHoney" onchange="updatePrice('Honey')">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <label for="weightHoney">Weight (in grams):</label>
-                <select id="weightHoney" onchange="updatePrice('Honey')">
-                    <option value="200">200g</option>
-                    <option value="350">350g</option>
-                    <option value="500">500g</option>
-                    <option value="1000">1000g</option>
-                </select>
-                <p>Price: <span id="priceHoney">300/-</span></p>
-                <button onclick="addToCart({ id: 1, name: 'Forest Honey', price: 300, image: 'Honey(250g).jpeg' }, 'Honey')">Add to Cart</button>
-            </div>
+        <!-- Forest Honey Product -->
+        <div class="product">
+            <h3>Forest Honey</h3>
+            <img src="Honey(250g).jpeg" alt="Forest Honey">
+            <p class="product-description">Natural and organic forest honey, known for its healing properties.</p>
 
-            <!-- Ghee Product -->
-            <div class="product">
-                <h3>Ghee</h3>
-                <img src="ghee.jpeg" alt="Ghee">
-                <p class="product-description">Description for Ghee</p>
-                <label for="quantityGhee">Quantity:</label>
-                <select id="quantityGhee" onchange="updatePrice('Ghee')">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <label for="weightGhee">Weight (in grams):</label>
-                <select id="weightGhee" onchange="updatePrice('Ghee')">
-                    <option value="200">200g</option>
-                    <option value="500">500g</option>
-                    <option value="1000">1000g</option>
-                </select>
-                <p>Price: <span id="priceGhee">400/-</span></p>
-                <button onclick="addToCart({ id: 2, name: 'Ghee', price: 400, image: 'ghee.jpeg' }, 'Ghee')">Add to Cart</button>
-            </div>
+            <label for="quantityHoney">Quantity:</label>
+            <select id="quantityHoney" onchange="updatePrice('Honey')">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
 
-            <!-- Henna Product -->
-            <div class="product">
-                <h3>Henna</h3>
-                <img src="Henna(250g).jpeg" alt="Henna">
-                <p class="product-description">Description for Henna</p>
-                <label for="quantityHenna">Quantity:</label>
-                <select id="quantityHenna" onchange="updatePrice('Henna')">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <label for="weightHenna">Weight (in grams):</label>
-                <select id="weightHenna" onchange="updatePrice('Henna')">
-                    <option value="200">200g</option>
-                    <option value="500">500g</option>
-                    <option value="1000">1000g</option>
-                </select>
-                <p>Price: <span id="priceHenna">300/-</span></p>
-                <button onclick="addToCart({ id: 3, name: 'Henna', price: 300, image: 'Henna(250g).jpeg' }, 'Henna')">Add to Cart</button>
-            </div>
+            <label for="weightHoney">Weight (in grams):</label>
+            <select id="weightHoney" onchange="updatePrice('Honey')">
+                <option value="200">200g</option>
+                <option value="350">350g</option>
+                <option value="500">500g</option>
+                <option value="1000">1000g</option>
+            </select>
 
-            <!-- Incense Sticks Product -->
-            <div class="product">
-                <h3>Incense Sticks</h3>
-                <img src="incensesticks.jpeg" alt="Incense Sticks">
-                <p class="product-description">Description for Incense Sticks</p>
-                <label for="quantityIncense">Quantity:</label>
-                <select id="quantityIncense" onchange="updatePrice('Incense')">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-                <label for="weightIncense">Weight (in grams):</label>
-                <select id="weightIncense" onchange="updatePrice('Incense')">
-                    <option value="200">200g</option>
-                    <option value="500">500g</option>
-                    <option value="1000">1000g</option>
-                </select>
-                <p>Price: <span id="priceIncense">300/-</span></p>
-                <button onclick="addToCart({ id: 4, name: 'Incense Sticks', price: 300, image: 'incensesticks.jpeg' }, 'Incense')">Add to Cart</button>
-            </div>
+            <p>Price: <span id="priceHoney">300/-</span></p>
+            <button onclick="addToCart({ id: 1, name: 'Forest Honey', price: 300, image: 'Honey(250g).jpeg' }, 'Honey')">Add to Cart</button>
         </div>
-    </section>
 
-    <footer>
-        <a href="index.html" class="back-home-button">Back to Home</a>
-    </footer>
+        <!-- Ghee Product -->
+        <div class="product">
+            <h3>Ghee</h3>
+            <img src="ghee.jpeg" alt="Ghee">
+            <p class="product-description">Pure organic ghee, made from grass-fed cow milk.</p>
+
+            <label for="quantityGhee">Quantity:</label>
+            <select id="quantityGhee" onchange="updatePrice('Ghee')">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <label for="weightGhee">Weight (in grams):</label>
+            <select id="weightGhee" onchange="updatePrice('Ghee')">
+                <option value="200">200g</option>
+                <option value="500">500g</option>
+                <option value="1000">1000g</option>
+            </select>
+
+            <p>Price: <span id="priceGhee">400/-</span></p>
+            <button onclick="addToCart({ id: 2, name: 'Ghee', price: 400, image: 'ghee.jpeg' }, 'Ghee')">Add to Cart</button>
+        </div>
+
+        <!-- Henna Product -->
+        <div class="product">
+            <h3>Henna</h3>
+            <img src="Henna(250g).jpeg" alt="Henna">
+            <p class="product-description">Organic henna powder for hair and hand application.</p>
+
+            <label for="quantityHenna">Quantity:</label>
+            <select id="quantityHenna" onchange="updatePrice('Henna')">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <label for="weightHenna">Weight (in grams):</label>
+            <select id="weightHenna" onchange="updatePrice('Henna')">
+                <option value="200">200g</option>
+                <option value="500">500g</option>
+                <option value="1000">1000g</option>
+            </select>
+
+            <p>Price: <span id="priceHenna">300/-</span></p>
+            <button onclick="addToCart({ id: 3, name: 'Henna', price: 300, image: 'Henna(250g).jpeg' }, 'Henna')">Add to Cart</button>
+        </div>
+
+        <!-- Incense Sticks Product -->
+        <div class="product">
+            <h3>Incense Sticks</h3>
+            <img src="incensesticks.jpeg" alt="Incense Sticks">
+            <p class="product-description">Hand-rolled organic incense sticks for meditation and relaxation.</p>
+
+            <label for="quantityIncense">Quantity:</label>
+            <select id="quantityIncense" onchange="updatePrice('Incense')">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+
+            <label for="weightIncense">Weight (in grams):</label>
+            <select id="weightIncense" onchange="updatePrice('Incense')">
+                <option value="200">200g</option>
+                <option value="500">500g</option>
+                <option value="1000">1000g</option>
+            </select>
+
+            <p>Price: <span id="priceIncense">300/-</span></p>
+            <button onclick="addToCart({ id: 4, name: 'Incense Sticks', price: 300, image: 'incensesticks.jpeg' }, 'Incense')">Add to Cart</button>
+        </div>
+
+    </section>
 
     <script>
         function addToCart(product, productName) {
@@ -148,6 +159,5 @@
         }
     </script>
 
-    </script>
 </body>
 </html>
