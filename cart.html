@@ -3,257 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay Script -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-
-        #cartDetails {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        #cartItems {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .cart-item {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin: 10px;
-            width: 45%;
-            max-width: 300px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .cart-item:hover {
-            transform: scale(1.03);
-        }
-
-        .cart-item img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .cart-item p {
-            margin: 5px 0;
-            font-size: 14px;
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px; /* Space between buttons */
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 12px 25px;
-            font-size: 16px;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 150px; /* Fixed width for all buttons */
-        }
-
-        .clear-cart-button {
-            background-color: #ff4d4d;
-        }
-
-        .clear-cart-button:hover {
-            background-color: #cc0000;
-            transform: scale(1.05);
-        }
-
-        .checkout-button {
-            background-color: #3399cc;
-        }
-
-        .checkout-button:hover {
-            background-color: #287aa9;
-            transform: scale(1.05);
-        }
-
-        .go-to-products-button {
-            background-color: #28a745;
-        }
-
-        .go-to-products-button:hover {
-            background-color: #218838;
-            transform: scale(1.05);
-        }
-
-        .back-home-button {
-            display: inline-block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            font-size: 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            display: block;
-            width: 150px;
-        }
-
-        .back-home-button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* Media Queries */
-        @media (max-width: 1200px) {
-            .cart-item {
-                width: 45%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .cart-item {
-                width: 100%;
-            }
-
-            #cartItems {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .actions {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .cart-item {
-                padding: 8px;
-                margin: 5px;
-            }
-
-            button, .back-home-button {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-        }
-    </style>
+    <title>6Seasons Organic Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
-    <div id="cartDetails">
-        <p><strong>SHOPPING CART</strong></p>
-    </div>
 
-    <div id="cartItems"></div>
-
-    <div class="actions">
-        <button class="go-to-products-button" onclick="window.location.href='products.html'">Go to Products</button>
-        <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
-        <button class="checkout-button" onclick="checkout()">Checkout</button>
-    </div>
-
-    <a href="index.html" class="back-home-button">Back to Home</a>
-
+    <!-- Your website's content -->
+    <h1>Welcome to 6Seasons Organic!</h1>
+    <p>Click below to make a payment.</p>
+    
+    <!-- The payment button -->
+    <button id="rzp-button1">Pay Now</button>
+    
     <script>
-        function displayCartItems() {
-            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartContainer = document.getElementById('cartItems');
-            cartContainer.innerHTML = '';
-
-            cartItems.forEach(item => {
-                let cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item');
-
-                let itemImage = document.createElement('img');
-                itemImage.src = item.imageUrl || 'https://via.placeholder.com/150'; // Default image if none provided
-
-                let itemName = document.createElement('p');
-                itemName.textContent = `Name: ${item.name}`;
-
-                let itemQuantity = document.createElement('p');
-                itemQuantity.textContent = `Quantity: ${item.selectedQuantity}`;
-
-                let itemWeight = document.createElement('p');
-                itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
-
-                let itemPrice = document.createElement('p');
-                itemPrice.textContent = `Price: ₹${item.price}`;
-
-                cartItem.appendChild(itemImage);
-                cartItem.appendChild(itemName);
-                cartItem.appendChild(itemQuantity);
-                cartItem.appendChild(itemWeight);
-                cartItem.appendChild(itemPrice);
-
-                cartContainer.appendChild(cartItem);
-            });
-        }
-
-        // Clear the cart
-        function clearCart() {
-            localStorage.removeItem('cart');
-            displayCartItems();
-        }
-
-        // Checkout function with Razorpay integration
-        function checkout() {
-            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
-            if (cartItems.length === 0) {
-                alert('Your cart is empty!');
-                return;
-            }
-
-            // Calculate total amount in paise (₹500 = 50000 paise)
-            let totalAmount = cartItems.reduce((total, item) => total + (item.selectedQuantity * item.price), 0) * 100;
-
+        // JavaScript to handle the Razorpay payment process
+        document.getElementById('rzp-button1').onclick = function (e) {
             var options = {
-                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Live Razorpay Key ID
-                "amount": totalAmount, // Amount in paise
+                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Test Key ID
+                "amount": "50000", // Amount in paise (50000 paise = INR 500)
                 "currency": "INR",
                 "name": "6Seasons Organic",
-                "description": "Order Payment",
-                "image": "https://example.com/logo.png", // Optional, add your logo here
+                "description": "Purchase Description",
+                "image": "https://example.com/your_logo", // Optional, add your logo here
                 "handler": function (response) {
                     alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
-                    // Clear the cart after successful payment
-                    clearCart();
                 },
                 "prefill": {
-                    "name": "Customer Name", // Optional: customer details for pre-filling
-                    "email": "customer_email@example.com", 
-                    "contact": "9999999999" 
+                    "name": "Your Customer's Name",
+                    "email": "customer_email@example.com",
+                    "contact": "9999999999"
                 },
                 "theme": {
-                    "color": "#3399cc" // Change the theme color
+                    "color": "#3399cc"
                 }
             };
-
             var rzp1 = new Razorpay(options);
             rzp1.open();
+            e.preventDefault();
         }
-
-        displayCartItems(); // Call the function to display cart items initially
     </script>
+
 </body>
 </html>
