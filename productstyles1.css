@@ -5,27 +5,11 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 header {
     text-align: center;
     margin: 20px;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: #333;
-}
-
-/* Center and align the button at the bottom */
-footer {
-    text-align: center;
-    margin: 20px;
-    margin-top: auto;
 }
 
 .back-home-button {
@@ -47,6 +31,13 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
+}
+
+#food-products h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #333;
 }
 
 /* Product container grid */
@@ -62,7 +53,7 @@ footer {
     border: 1px solid #ddd;
     padding: 20px;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
@@ -71,46 +62,69 @@ footer {
 
 .product img {
     width: 100%;
+    max-width: 200px;
     height: 200px;
     object-fit: cover;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .product h3 {
     font-size: 1.5rem;
-    margin: 10px 0;
+    margin-bottom: 10px;
     color: #333;
 }
 
-.product p {
-    color: #555;
+.product-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
-.product select {
-    margin: 10px 0;
+label {
+    display: block;
+    margin-bottom: 5px;
 }
 
-.product button {
+select {
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 100%;
+    max-width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
 }
 
-.product button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #218838;
 }
 
-/* Responsive layout */
+.product p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Media query for mobile responsiveness */
 @media (max-width: 768px) {
     .product-container {
         grid-template-columns: 1fr;
     }
 
     .product img {
+        width: 100%;
         max-width: 150px;
         height: 150px;
     }
