@@ -11,6 +11,16 @@ h2 {
     margin-top: 20px;
     color: #333;
 }
+#food-products h2 {
+    position: sticky; /* Make the heading stick at the top */
+    top: 0;
+    background-color: #fff; /* Set background to white for better visibility */
+    padding: 10px;
+    z-index: 1000; /* Ensure the heading is above other content */
+    border-bottom: 2px solid #007bff; /* Optional: Add a bottom border for styling */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+}
 
 /* Product Section */
 #food-products {
@@ -18,6 +28,7 @@ h2 {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 20px;
+    padding-top: 60px; 
 }
 
 /* Product box styling */
@@ -114,74 +125,4 @@ p {
 }
 
 
-
-
-/* Style for the sticky heading */
-#food-products h2 {
-    position: sticky; /* Make the heading stick at the top */
-    top: 0;
-    background-color: #fff; /* Set background to white for better visibility */
-    padding: 10px;
-    z-index: 1000; /* Ensure the heading is above other content */
-    border-bottom: 2px solid #007bff; /* Optional: Add a bottom border for styling */
-    text-align: center; /* Center the text */
-    margin: 0; /* Remove default margin */
-}
-
-/* General styling for products */
-#food-products {
-    padding-top: 60px; /* Add padding to prevent content overlap with the sticky heading */
-}
-
-.product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-}
-
-.product img {
-    width: 200px; /* Set a fixed width for images */
-    height: auto; /* Maintain aspect ratio */
-    border: 1px solid #ddd; /* Optional: Add border around images */
-    padding: 5px; /* Add padding for better visual separation */
-}
-
-.product-description {
-    text-align: center; /* Center the text in the description */
-    margin: 10px 0; /* Add margin for spacing */
-}
-
-select {
-    margin-bottom: 10px; /* Add spacing between select elements */
-}
-
-button {
-    background-color: #007bff; /* Blue background for the button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px; /* Rounded corners for the button */
-}
-
-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
-
-/* Back to Home button styling */
-.back-home-button {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-.back-home-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-}
 
