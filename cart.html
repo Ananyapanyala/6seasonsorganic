@@ -5,14 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay Script -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #cartDetails {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #cartItems {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cart-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #3399cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #287aa9;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <div id="cartDetails">
         <p><strong>SHOPPING CART</strong></p>
     </div>
+
     <div id="cartItems"></div>
-    <button onclick="clearCart()">Clear Cart</button>
-    <button onclick="checkout()">Checkout</button>
+
+    <div class="actions">
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Checkout</button>
+    </div>
 
     <script>
         function displayCartItems() {
@@ -24,6 +90,9 @@
                 let cartItem = document.createElement('div');
                 cartItem.classList.add('cart-item');
 
+                let itemImage = document.createElement('img');
+                itemImage.src = item.imageUrl || 'https://via.placeholder.com/150'; // Default image if none provided
+
                 let itemName = document.createElement('p');
                 itemName.textContent = `Name: ${item.name}`;
 
@@ -33,9 +102,14 @@
                 let itemWeight = document.createElement('p');
                 itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
 
+                let itemPrice = document.createElement('p');
+                itemPrice.textContent = `Price: ₹${item.price}`;
+
+                cartItem.appendChild(itemImage);
                 cartItem.appendChild(itemName);
                 cartItem.appendChild(itemQuantity);
                 cartItem.appendChild(itemWeight);
+                cartItem.appendChild(itemPrice);
 
                 cartContainer.appendChild(cartItem);
             });
