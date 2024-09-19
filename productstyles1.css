@@ -120,4 +120,12 @@ button:hover {
 /* Media query for mobile responsiveness */
 @media (max-width: 768px) {
     .product-container {
-        grid-template-columns
+        grid-template-columns: 1fr;
+    }
+
+    .product img {
+        width: 100%;
+        max-width: 150px;
+        height: 150px;
+    }
+}
