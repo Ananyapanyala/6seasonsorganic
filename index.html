@@ -39,13 +39,84 @@
       }
      
 
-      header {
-         position: fixed;
-         top: 0;
-         width: 100%;
-         background-color: #fff; /* Change this to the desired background color */
-         z-index: 1000; /* Ensure it stays on top of other elements */
-      }
+     
+        /* Header Styles */
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo img {
+            width: 100px;
+            height: auto;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            background-color: white;
+            height: 3px;
+            width: 25px;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Menu Styles */
+        .menu {
+            display: flex;
+            list-style-type: none;
+            gap: 20px;
+        }
+
+        .menu li {
+            margin: 0;
+        }
+
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .menu li a:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+
+        /* Mobile Styles */
+        .menu.show {
+            display: block;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #007BFF;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
 
       .navbar {
          display: flex;
