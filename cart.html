@@ -15,7 +15,6 @@
     <button onclick="checkout()">Checkout</button>
 
     <script>
-        // Your existing displayCartItems function and other cart logic
         function displayCartItems() {
             let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
             let cartContainer = document.getElementById('cartItems');
@@ -48,7 +47,7 @@
             displayCartItems();
         }
 
-        // Checkout function to integrate Razorpay
+        // Checkout function with Razorpay integration
         function checkout() {
             let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -57,11 +56,11 @@
                 return;
             }
 
-            // Calculate total amount in paise (1 INR = 100 paise)
+            // Calculate total amount in paise (₹500 = 50000 paise)
             let totalAmount = cartItems.reduce((total, item) => total + (item.selectedQuantity * item.price), 0) * 100;
 
             var options = {
-                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Razorpay Test Key ID
+                "key": "rzp_live_2i9zMpw9ffrftX", // Your Live Razorpay Key ID
                 "amount": totalAmount, // Amount in paise
                 "currency": "INR",
                 "name": "6Seasons Organic",
@@ -73,12 +72,12 @@
                     clearCart();
                 },
                 "prefill": {
-                    "name": "Your Customer's Name",
-                    "email": "customer_email@example.com",
-                    "contact": "9999999999"
+                    "name": "Customer Name", // Optional: customer details for pre-filling
+                    "email": "customer_email@example.com", 
+                    "contact": "9999999999" 
                 },
                 "theme": {
-                    "color": "#3399cc"
+                    "color": "#3399cc" // Change the theme color
                 }
             };
 
