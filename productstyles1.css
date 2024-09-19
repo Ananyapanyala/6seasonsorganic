@@ -1,114 +1,123 @@
-/* General page styling */
+/* CSS for styling products */
+
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
 }
 
-h2 {
+header {
     text-align: center;
-    margin-top: 20px;
+    margin: 20px;
+}
+
+.back-home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.back-home-button:hover {
+    background-color: #218838;
+}
+
+/* Products Section */
+#food-products {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#food-products h2 {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
     color: #333;
 }
 
-/* Product Section */
-#food-products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 20px;
+/* Product container grid */
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
 }
 
-/* Product box styling */
 .product {
-    width: 300px;
-    height: 400px;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    border: 1px solid #ddd;
     padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 
 .product img {
-    max-width: 100%;
-    height: 150px;
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .product h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
     color: #333;
-    margin: 15px 0;
 }
 
 .product-description {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
-/* Dropdown and button styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
 select {
-    margin: 5px 0;
+    margin-bottom: 15px;
     padding: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
     width: 100%;
+    max-width: 150px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
 button {
-    background-color: #4CAF50;
+    padding: 10px 20px;
+    background-color: #28a745;
     color: white;
-    padding: 10px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #218838;
 }
 
-/* Price Styling */
-p {
-    font-weight: bold;
-    color: #333;
+.product p {
+    font-size: 1.2rem;
+    margin: 10px 0;
 }
 
-/* Back to Home button */
-.back-home-button {
-    display: inline-block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    display: block;
-    width: 150px;
+.product:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.back-home-button:hover {
-    background-color: #0056b3;
-}
-
-/* Mobile responsive */
+/* Media query for mobile responsiveness */
 @media (max-width: 768px) {
-    #food-products {
-        flex-direction: column;
-        align-items: center;
-    }
-}
+    .product-container {
+        grid-template-columns
