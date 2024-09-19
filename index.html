@@ -514,23 +514,76 @@ footer {
             font-size: 24px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav {
+            display: flex;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #d3d3d3;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header .logo {
+                margin-bottom: 10px;
+            }
+
+            header nav {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            header nav a {
+                margin-left: 0;
+                margin-bottom: 10px;
+                font-size: 16px;
+            }
+
+            header nav a:last-child {
+                margin-bottom: 0;
+            }
+        }
  </style>
 </head>
 <body>
-    <div class="container1">
-        <img src="bckg.jpeg" alt="Background" class="background-image" height="200px" width="1800px">
-    </div>
-   
-    
-    <div class="purchase-dialog" id="purchaseDialog" style="display:none;">
-        <!-- Content will be updated dynamically -->
-    </div>
-    <div id="welcomeModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Welcome!</h2>
-        <p>Great to see you on our website!</p>
-    </div>
-    <button id="scrollTopBtn" onclick="scrollToTop()">Top</button>
    <header>
     
       <nav class="navbar">
@@ -558,6 +611,21 @@ footer {
       </nav>
       
    </header>
+    <div class="container1">
+        <img src="bckg.jpeg" alt="Background" class="background-image" height="200px" width="1800px">
+    </div>
+   
+    
+    <div class="purchase-dialog" id="purchaseDialog" style="display:none;">
+        <!-- Content will be updated dynamically -->
+    </div>
+    <div id="welcomeModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Welcome!</h2>
+        <p>Great to see you on our website!</p>
+    </div>
+    <button id="scrollTopBtn" onclick="scrollToTop()">Top</button>
+  
    <!-- ... (previous HTML code) ... -->
    <section class="pro-section">
     <h2>OUR FEATURED PRODUCTS</h2>
