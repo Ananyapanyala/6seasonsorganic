@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     <link rel="stylesheet" href="productstyles.css">
-    <a href="index.html" class="back-home-button">Back to Home</a>
-
 </head>
 <body>
 
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-home-button">Back to Home</a>
+
+    <!-- Products Section -->
     <section id="food-products">
         <h2>OUR PRODUCTS</h2>
 
         <!-- Forest Honey Product -->
         <div class="product">
             <h3>Forest Honey</h3>
-            <img src="Honey(250g).jpeg" alt="Forest Honey" width="200px" height="200px">
-            <p class="product-description">Description for Forest Honey</p>
+            <img src="Honey(250g).jpeg" alt="Forest Honey">
+            <p class="product-description">Natural and organic forest honey, known for its healing properties.</p>
 
             <label for="quantityHoney">Quantity:</label>
             <select id="quantityHoney" onchange="updatePrice('Honey')">
@@ -40,8 +43,8 @@
         <!-- Ghee Product -->
         <div class="product">
             <h3>Ghee</h3>
-            <img src="ghee.jpeg" alt="Ghee" width="200px" height="200px">
-            <p class="product-description">Description for Ghee</p>
+            <img src="ghee.jpeg" alt="Ghee">
+            <p class="product-description">Pure organic ghee, made from grass-fed cow milk.</p>
 
             <label for="quantityGhee">Quantity:</label>
             <select id="quantityGhee" onchange="updatePrice('Ghee')">
@@ -64,8 +67,8 @@
         <!-- Henna Product -->
         <div class="product">
             <h3>Henna</h3>
-            <img src="Henna(250g).jpeg" alt="Henna" width="200px" height="200px">
-            <p class="product-description">Description for Henna</p>
+            <img src="Henna(250g).jpeg" alt="Henna">
+            <p class="product-description">Organic henna powder for hair and hand application.</p>
 
             <label for="quantityHenna">Quantity:</label>
             <select id="quantityHenna" onchange="updatePrice('Henna')">
@@ -88,8 +91,8 @@
         <!-- Incense Sticks Product -->
         <div class="product">
             <h3>Incense Sticks</h3>
-            <img src="incensesticks.jpeg" alt="Incense Sticks" width="200px" height="200px">
-            <p class="product-description">Description for Incense Sticks</p>
+            <img src="incensesticks.jpeg" alt="Incense Sticks">
+            <p class="product-description">Hand-rolled organic incense sticks for meditation and relaxation.</p>
 
             <label for="quantityIncense">Quantity:</label>
             <select id="quantityIncense" onchange="updatePrice('Incense')">
@@ -128,31 +131,31 @@
             shoppingCart.push(cartItem);
 
             localStorage.setItem('cart', JSON.stringify(shoppingCart));
-            renderCart(); // Call function to render updated cart items
+            alert(product.name + ' added to cart!');
         }
 
         function updatePrice(productName) {
-            const quantity = parseFloat(document.getElementById(`quantity${productName}`).value) || 1;
-            const weight = parseFloat(document.getElementById(`weight${productName}`).value) || 1;
-            const priceElement = document.getElementById(`price${productName}`);
+            const quantity = document.getElementById(`quantity${productName}`).value;
+            const weight = document.getElementById(`weight${productName}`).value;
+            let basePrice = 0;
 
-            // Define the unit prices for each product
-            const unitPrices = {
-                Honey: 1000,  // Set the correct unit price for Forest Honey
-                Ghee: 1500,   // Set the correct unit price for Ghee
-                Henna: 500,   // Set the correct unit price for Henna
-                Incense: 300  // Set the correct unit price for Incense Sticks
-            };
+            switch (productName) {
+                case 'Honey':
+                    basePrice = 300;
+                    break;
+                case 'Ghee':
+                    basePrice = 400;
+                    break;
+                case 'Henna':
+                    basePrice = 300;
+                    break;
+                case 'Incense':
+                    basePrice = 300;
+                    break;
+            }
 
-            // Calculate the total price based on the selected quantity and weight
-            const totalPrice = unitPrices[productName] * quantity * (weight / 1000);
-            priceElement.textContent = totalPrice.toFixed(2) + "/-"; // Display the total price
-        }
-
-        function renderCart() {
-            // Function to render cart items if needed
-            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-            console.log(cartItems);
+            const price = basePrice * quantity * (weight / 200);
+            document.getElementById(`price${productName}`).innerText = price + '/-';
         }
     </script>
 
