@@ -55,8 +55,9 @@
 
         .actions {
             display: flex;
-            justify-content: center;
-            gap: 20px; /* Add space between buttons */
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Add space between buttons */
             margin-top: 20px;
         }
 
@@ -85,6 +86,15 @@
 
         .checkout-button:hover {
             background-color: #287aa9;
+            transform: scale(1.05);
+        }
+
+        .go-to-products-button {
+            background-color: #28a745;
+        }
+
+        .go-to-products-button:hover {
+            background-color: #218838;
             transform: scale(1.05);
         }
 
@@ -156,6 +166,7 @@
     <div id="cartItems"></div>
 
     <div class="actions">
+        <button class="go-to-products-button" onclick="window.location.href='products.html'">Go to Products</button>
         <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
         <button class="checkout-button" onclick="checkout()">Checkout</button>
     </div>
