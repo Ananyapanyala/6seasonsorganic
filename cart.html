@@ -22,22 +22,29 @@
         #cartItems {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
         }
 
         .cart-item {
             background-color: white;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 15px;
+            padding: 10px;
             margin: 10px;
-            width: 30%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            max-width: 300px; /* Set a max-width for better control */
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: scale(1.03);
         }
 
         .cart-item img {
             max-width: 100%;
             height: auto;
+            border-radius: 5px;
             margin-bottom: 10px;
         }
 
@@ -46,25 +53,39 @@
             font-size: 14px;
         }
 
-        button {
-            padding: 10px 20px;
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Add space between buttons */
             margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
             font-size: 16px;
-            background-color: #3399cc;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        button:hover {
+        .clear-cart-button {
+            background-color: #ff4d4d;
+        }
+
+        .clear-cart-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .checkout-button {
+            background-color: #3399cc;
+        }
+
+        .checkout-button:hover {
             background-color: #287aa9;
-        }
-
-        .actions {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            transform: scale(1.05);
         }
 
         .back-home-button {
@@ -77,13 +98,14 @@
             text-decoration: none;
             font-size: 16px;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease;
             display: block;
             width: 150px;
         }
 
         .back-home-button:hover {
             background-color: #0056b3;
+            transform: scale(1.05);
         }
 
         /* Media Queries */
@@ -105,6 +127,7 @@
 
             .actions {
                 flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -114,7 +137,7 @@
             }
 
             .cart-item {
-                padding: 10px;
+                padding: 8px;
                 margin: 5px;
             }
 
@@ -133,8 +156,8 @@
     <div id="cartItems"></div>
 
     <div class="actions">
-        <button onclick="clearCart()">Clear Cart</button>
-        <button onclick="checkout()">Checkout</button>
+        <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
     </div>
 
     <script>
