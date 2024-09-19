@@ -104,13 +104,50 @@
     </footer>
 
     <script>
-        function updatePrice(productName) {
-            // Your existing updatePrice function logic
+        function addToCart(product, productName) {
+            const selectedQuantity = document.getElementById(`quantity${productName}`).value;
+            const selectedWeight = document.getElementById(`weight${productName}`).value;
+
+            const cartItem = {
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                selectedQuantity,
+                selectedWeight
+            };
+
+            let shoppingCart = JSON.parse(localStorage.getItem('cart')) || [];
+            shoppingCart.push(cartItem);
+
+            localStorage.setItem('cart', JSON.stringify(shoppingCart));
+            alert(product.name + ' added to cart!');
         }
 
-        function addToCart(product, productName) {
-            // Your existing addToCart function logic
+        function updatePrice(productName) {
+            const quantity = document.getElementById(`quantity${productName}`).value;
+            const weight = document.getElementById(`weight${productName}`).value;
+            let basePrice = 0;
+
+            switch (productName) {
+                case 'Honey':
+                    basePrice = 300;
+                    break;
+                case 'Ghee':
+                    basePrice = 400;
+                    break;
+                case 'Henna':
+                    basePrice = 300;
+                    break;
+                case 'Incense':
+                    basePrice = 300;
+                    break;
+            }
+
+            const price = basePrice * quantity * (weight / 200);
+            document.getElementById(`price${productName}`).innerText = price + '/-';
         }
+    </script>
+
     </script>
 </body>
 </html>
