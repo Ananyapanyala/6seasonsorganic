@@ -5,11 +5,21 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
     text-align: center;
     margin: 20px;
+}
+
+/* Center and align the button at the bottom */
+footer {
+    text-align: center;
+    margin: 20px;
+    margin-top: auto;
 }
 
 .back-home-button {
@@ -117,14 +127,13 @@ button:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Media query for mobile responsiveness */
+/* Responsive layout */
 @media (max-width: 768px) {
     .product-container {
         grid-template-columns: 1fr;
     }
 
     .product img {
-        width: 100%;
         max-width: 150px;
         height: 150px;
     }
