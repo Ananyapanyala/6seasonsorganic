@@ -3,30 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>6Seasons Organic Payment</title>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <title>Shopping Cart</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay Script -->
 </head>
 <body>
+    <div id="cartDetails">
+        <p><strong>SHOPPING CART</strong></p>
+    </div>
+    <div id="cartItems"></div>
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="checkout()">Checkout</button>
 
-    <!-- Your website's content -->
-    <h1>Welcome to 6Seasons Organic!</h1>
-    <p>Click below to make a payment.</p>
-    
-    <!-- The payment button -->
-    <button id="rzp-button1">Pay Now</button>
-    
     <script>
-        // JavaScript to handle the Razorpay payment process
-        document.getElementById('rzp-button1').onclick = function (e) {
+        // Your existing displayCartItems function and other cart logic
+        function displayCartItems() {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cartItems');
+            cartContainer.innerHTML = '';
+
+            cartItems.forEach(item => {
+                let cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+
+                let itemName = document.createElement('p');
+                itemName.textContent = `Name: ${item.name}`;
+
+                let itemQuantity = document.createElement('p');
+                itemQuantity.textContent = `Quantity: ${item.selectedQuantity}`;
+
+                let itemWeight = document.createElement('p');
+                itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
+
+                cartItem.appendChild(itemName);
+                cartItem.appendChild(itemQuantity);
+                cartItem.appendChild(itemWeight);
+
+                cartContainer.appendChild(cartItem);
+            });
+        }
+
+        // Clear the cart
+        function clearCart() {
+            localStorage.removeItem('cart');
+            displayCartItems();
+        }
+
+        // Checkout function to integrate Razorpay
+        function checkout() {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            if (cartItems.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            // Calculate total amount in paise (1 INR = 100 paise)
+            let totalAmount = cartItems.reduce((total, item) => total + (item.selectedQuantity * item.price), 0) * 100;
+
             var options = {
-                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Test Key ID
-                "amount": "50000", // Amount in paise (50000 paise = INR 500)
+                "key": "rzp_test_MNJm2dCnKkdZHZ", // Your Razorpay Test Key ID
+                "amount": totalAmount, // Amount in paise
                 "currency": "INR",
                 "name": "6Seasons Organic",
-                "description": "Purchase Description",
-                "image": "https://example.com/your_logo", // Optional, add your logo here
+                "description": "Order Payment",
+                "image": "https://example.com/logo.png", // Optional, add your logo here
                 "handler": function (response) {
                     alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    // Clear the cart after successful payment
+                    clearCart();
                 },
                 "prefill": {
                     "name": "Your Customer's Name",
@@ -37,11 +81,12 @@
                     "color": "#3399cc"
                 }
             };
+
             var rzp1 = new Razorpay(options);
             rzp1.open();
-            e.preventDefault();
         }
-    </script>
 
+        displayCartItems(); // Call the function to display cart items initially
+    </script>
 </body>
 </html>
