@@ -441,14 +441,12 @@ footer {
   background-color: white;
   text-align: center;
 }
-
 .pro-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px; /* Space between the cards */
 }
-
 .pro-card {
   background-color: white;
   width: 100%;
@@ -469,19 +467,14 @@ footer {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.pro-item {
-  flex: 1 1 30%; /* Ensures all items have the same width and are responsive */
-  max-width: 30%; /* Fix the width to ensure equal-sized cards */
-  margin-bottom: 20px;
+.pro-image img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid black;
 }
 
-.circular-image img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ddd;
-  margin-bottom: 15px;
+.pro-info {
+  padding: 20px;
 }
 
 .pro-info h2 {
@@ -513,21 +506,71 @@ footer {
   color: white;
 }
 
+
+
 .pro-info button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
+}
+.pro-item {
+  flex: 1 1 30%; /* Ensures all items have the same width and are responsive */
+  max-width: 30%; /* Fix the width to ensure equal-sized cards */
+  margin-bottom: 20px;
 }
 
-/* Media Queries for Smaller Screens */
-@media (max-width: 768px) {
-  .pro-item {
-    flex: 1 1 100%; /* Stack items on smaller screens */
-    max-width: 100%;
-  }
-
-  .pro-card {
-    padding: 15px;
-  }
+.circular-image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px;
 }
+      .purchase-dialog {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 1); /* Change this value to adjust opacity */
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+        /* Styles for product image */
+        .product-image {
+            width: 50px; /* Adjust the image size */
+            height: 50px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Styles for "View More" link */
+        .view-more-link {
+            color:green;
+            cursor: pointer;
+        }
+
+        /* Styles for the buyers list */
+        .buyers-list {
+            display: relative;
+            margin-top: 5px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .close {
+            float: right;
+            cursor: pointer;
+        }
 
         #scrollTopBtn {
             display: none;
@@ -546,6 +589,16 @@ footer {
             font-size: 24px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
+      @media (max-width: 768px) {
+  .pro-item {
+    flex: 1 1 100%; /* Stack items on smaller screens */
+    max-width: 100%;
+  }
+
+  .pro-card {
+    padding: 15px;
+  }
+}
  </style>
 </head>
 <body>
