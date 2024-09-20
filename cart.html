@@ -5,14 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script> <!-- Razorpay Script -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #cartDetails {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #cartItems {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cart-item {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            width: 45%;
+            max-width: 300px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .cart-item:hover {
+            transform: scale(1.03);
+        }
+
+        .cart-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px; /* Space between buttons */
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 150px; /* Fixed width for all buttons */
+        }
+
+        .clear-cart-button {
+            background-color: #ff4d4d;
+        }
+
+        .clear-cart-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .checkout-button {
+            background-color: #3399cc;
+        }
+
+        .checkout-button:hover {
+            background-color: #287aa9;
+            transform: scale(1.05);
+        }
+
+        .go-to-products-button {
+            background-color: #28a745;
+        }
+
+        .go-to-products-button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .back-home-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block;
+            width: 150px;
+        }
+
+        .back-home-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .cart-item {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                width: 100%;
+            }
+
+            #cartItems {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .cart-item {
+                padding: 8px;
+                margin: 5px;
+            }
+
+            button, .back-home-button {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="cartDetails">
         <p><strong>SHOPPING CART</strong></p>
     </div>
+
     <div id="cartItems"></div>
-    <button onclick="clearCart()">Clear Cart</button>
-    <button onclick="checkout()">Checkout</button>
+
+    <div class="actions">
+        <button class="go-to-products-button" onclick="window.location.href='products.html'">Go to Products</button>
+        <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
+        <button class="checkout-button" onclick="checkout()">Checkout</button>
+    </div>
+
+    <a href="index.html" class="back-home-button">Back to Home</a>
 
     <script>
         function displayCartItems() {
@@ -24,6 +184,9 @@
                 let cartItem = document.createElement('div');
                 cartItem.classList.add('cart-item');
 
+                let itemImage = document.createElement('img');
+                itemImage.src = item.imageUrl || 'https://via.placeholder.com/150'; // Default image if none provided
+
                 let itemName = document.createElement('p');
                 itemName.textContent = `Name: ${item.name}`;
 
@@ -33,9 +196,14 @@
                 let itemWeight = document.createElement('p');
                 itemWeight.textContent = `Weight: ${item.selectedWeight}g`;
 
+                let itemPrice = document.createElement('p');
+                itemPrice.textContent = `Price: ₹${item.price}`;
+
+                cartItem.appendChild(itemImage);
                 cartItem.appendChild(itemName);
                 cartItem.appendChild(itemQuantity);
                 cartItem.appendChild(itemWeight);
+                cartItem.appendChild(itemPrice);
 
                 cartContainer.appendChild(cartItem);
             });
