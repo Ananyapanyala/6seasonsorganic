@@ -438,7 +438,7 @@ footer {
 }
 .pro-section {
   padding: 50px 0;
-  background-color:white;
+  background-color: white;
   text-align: center;
 }
 
@@ -446,106 +446,89 @@ footer {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: 20px; /* Space between the cards */
 }
 
+.pro-card {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
 
 .pro-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.pro-image img {
-  width: 100%;
-  height: auto;
-  border-bottom: 1px solid black;
+.pro-item {
+  flex: 1 1 30%; /* Ensures all items have the same width and are responsive */
+  max-width: 30%; /* Fix the width to ensure equal-sized cards */
+  margin-bottom: 20px;
 }
 
-.pro-info {
-  padding: 20px;
+.circular-image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-bottom: 15px;
 }
 
 .pro-info h2 {
   font-size: 1.5em;
   margin-bottom: 10px;
+  color: #333;
 }
 
 .pro-info p {
-  color: black;
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .pro-info button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: none;
-  background-color:yellow;
+  background-color: #007BFF;
   color: white;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
 }
 
+.pro-info button a {
+  text-decoration: none;
+  color: white;
+}
+
 .pro-info button:hover {
-  background-color: #45a049;
-}
-.pro-item {
-        /* Adjust styles as needed for the rectangular container */
-        width: 30%;
-        margin-bottom: 30px;
-        height: 350px; /* Fixed height for each specialty card */
-        border: 1px solid black; /* Border for the rectangular container */
-        border-radius: 8px; /* Rounded corners for the rectangle */
-        overflow: hidden; /* Clip the content within the rectangle */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        background-color:yellowgreen;
-      }
-      .purchase-dialog {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(255, 255, 255, 1); /* Change this value to adjust opacity */
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 3px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #0056b3;
 }
 
-        /* Styles for product image */
-        .product-image {
-            width: 50px; /* Adjust the image size */
-            height: 50px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .pro-item {
+    flex: 1 1 100%; /* Stack items on smaller screens */
+    max-width: 100%;
+  }
 
-        /* Styles for "View More" link */
-        .view-more-link {
-            color:green;
-            cursor: pointer;
-        }
+  .pro-card {
+    padding: 15px;
+  }
+}
 
-        /* Styles for the buyers list */
-        .buyers-list {
-            display: relative;
-            margin-top: 5px;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .close {
-            float: right;
-            cursor: pointer;
-        }
         #scrollTopBtn {
             display: none;
             position: fixed;
@@ -612,52 +595,54 @@ footer {
     <button id="scrollTopBtn" onclick="scrollToTop()">Top</button>
   
    <!-- ... (previous HTML code) ... -->
-   <section class="pro-section">
+  <section class="pro-section">
     <h2>OUR FEATURED PRODUCTS</h2>
     <div class="pro-container">
-      <div class="pro-item">
-        <div class="pro-card">
-            <h2>Pulses & Spices</h2>
-          <div class="circular-image">
-            <img src="organicsourcing.jpg" alt="Organic Sourcing" width=2px height=2px>
-          </div>
-          <div class="pro-info">
-            <p>Discover our commitment to sourcing the finest organic ingredients, ensuring sustainability and quality.</p>
-            <button class="toggle-info" >
-                    <a href="products.html">Shop Now</a></button>
-          </div>
+        <div class="pro-item">
+            <div class="pro-card">
+                <h2>Pulses & Spices</h2>
+                <div class="circular-image">
+                    <img src="organicsourcing.jpg" alt="Organic Sourcing">
+                </div>
+                <div class="pro-info">
+                    <p>Discover our commitment to sourcing the finest organic ingredients, ensuring sustainability and quality.</p>
+                    <button class="toggle-info">
+                        <a href="products.html">Shop Now</a>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="pro-item">
-        <div class="pro-card">
-            <h2>Natural Bio Products</h2>
-          <div class="circular-image">
-            <img src="pack.jpeg" alt="Eco-friendly Packaging">
-          </div>
-          <div class="pro-info">
-            
-            <p>Explore our eco-conscious packaging solutions, contributing to a greener planet with biodegradable materials.</p>
-            <button class="toggle-info">
-                    <a href="products.html">Shop Now</a></button>
-          </div>
+        <div class="pro-item">
+            <div class="pro-card">
+                <h2>Natural Bio Products</h2>
+                <div class="circular-image">
+                    <img src="pack.jpeg" alt="Eco-friendly Packaging">
+                </div>
+                <div class="pro-info">
+                    <p>Explore our eco-conscious packaging solutions, contributing to a greener planet with biodegradable materials.</p>
+                    <button class="toggle-info">
+                        <a href="products.html">Shop Now</a>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="pro-item">
-        <div class="pro-card">
-            <h2>Pooja Essentials</h2>
-          <div class="circular-image">
-            <img src="pa.jpg" alt="Sustainable Practices">
-          </div>
-          <div class="pro-info">
-            
-            <p>Experience our sustainable production methods that prioritize reduced waste and energy efficiency.</p>
-            <button class="toggle-info">
-                    <a href="products.html">Shop Now</a></button>
-          </div>
+        <div class="pro-item">
+            <div class="pro-card">
+                <h2>Pooja Essentials</h2>
+                <div class="circular-image">
+                    <img src="pa.jpg" alt="Sustainable Practices">
+                </div>
+                <div class="pro-info">
+                    <p>Experience our sustainable production methods that prioritize reduced waste and energy efficiency.</p>
+                    <button class="toggle-info">
+                        <a href="products.html">Shop Now</a>
+                    </button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
+
 
 <section class="specialties-section">
     <h2>OUR FEATURES</h2>
