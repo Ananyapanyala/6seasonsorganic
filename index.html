@@ -30,93 +30,113 @@
     <meta name="twitter:description" content="Explore our range of organic products, made from natural ingredients and sustainably sourced. Choose healthier options for yourself and the planet.">
     <meta name="twitter:image" content="logo.jpg">
    <style>
-    body {
+     body {
          font-family: Arial, sans-serif;
          margin: 0;
          padding: 0;
          background-color: #f5f5f5;
          color: #333;
       }
-     
 
-     
-        /* Header Styles */
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
+      /* Header Styles */
+      header {
+         position: fixed;
+         top: 0;
+         width: 100%;
+         background-color: #007BFF;
+         z-index: 1000;
+         padding: 10px 20px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         color: white;
+      }
+
+      header .logo img {
+         width: 100px;
+         height: auto;
+      }
+
+      .hamburger {
+         display: none;
+         flex-direction: column;
+         cursor: pointer;
+      }
+
+      .hamburger div {
+         background-color: white;
+         height: 3px;
+         width: 25px;
+         margin: 4px 0;
+      }
+
+      .menu {
+         list-style: none;
+         display: none;
+         flex-direction: column;
+         background-color: #007BFF;
+         position: absolute;
+         top: 60px;
+         right: 0;
+         width: 200px;
+         padding: 10px;
+      }
+
+      .menu li {
+         border-bottom: 1px solid #ddd;
+         margin-bottom: 5px;
+      }
+
+      .menu li a {
+         text-decoration: none;
+         color: white;
+         padding: 10px;
+         display: block;
+      }
+
+      .menu li a:hover {
+         background-color: #0056b3;
+      }
+
+      .menu.show {
+         display: flex;
+      }
+
+      @media (max-width: 768px) {
+         .hamburger {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+         }
 
-        header .logo img {
-            width: 100px;
-            height: auto;
-        }
-
-        /* Hamburger Menu Styles */
-        .hamburger {
+         .menu {
             display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
+         }
+      }
 
-        .hamburger div {
-            background-color: white;
-            height: 3px;
-            width: 25px;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
+      /* Slideshow Styles */
+      .slideshow-container {
+         position: relative;
+         width: 100%;
+         height: 500px;
+         margin-top: 60px; /* Adjust to create space below the fixed header */
+         overflow: hidden;
+      }
 
-        /* Menu Styles */
-        .menu {
-            display: flex;
-            list-style-type: none;
-            gap: 20px;
-        }
+      .slides {
+         display: none;
+         position: absolute;
+         width: 100%;
+         height: 100%;
+      }
 
-        .menu li {
-            margin: 0;
-        }
+      .slides img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
 
-        .menu li a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-        }
-
-        .menu li a:hover {
-            background-color: #0056b3;
-            border-radius: 5px;
-        }
-
-        /* Mobile Styles */
-        .menu.show {
-            display: block;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #007BFF;
-                flex-direction: column;
-                width: 100%;
-                align-items: center;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-        }
+      .active {
+         display: block;
+      }
 
       .navbar {
          display: flex;
@@ -606,9 +626,19 @@ footer {
       </ul>
    </header>
 
-    <div class="container1">
-        <img src="bckg.jpeg" alt="Background" class="background-image" height="200px" width="1800px">
-    </div>
+   <!-- Slideshow Container -->
+   <div class="slideshow-container">
+      <div class="slides active">
+         <img src="bckg.jpeg" alt="Slide 1">
+      </div>
+      <div class="slides">
+         <img src="bckg2.jpeg" alt="Slide 2">
+      </div>
+      <div class="slides">
+         <img src="bckg3.jpeg" alt="Slide 3">
+      </div>
+   </div>
+
    
     
     <div class="purchase-dialog" id="purchaseDialog" style="display:none;">
@@ -1034,9 +1064,24 @@ footer {
             topButton.style.display = "none";
         }
     }
-   function toggleMenu() {
+  function toggleMenu() {
          var menu = document.getElementById('menu');
          menu.classList.toggle('show');
+      }
+
+      // Slideshow functionality
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+         let slides = document.getElementsByClassName("slides");
+         for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove("active");
+         }
+         slideIndex++;
+         if (slideIndex > slides.length) { slideIndex = 1 }
+         slides[slideIndex - 1].classList.add("active");
+         setTimeout(showSlides, 3000); // Change slide every 3 seconds
       }
 </script>
    <script type="application/ld+json">
