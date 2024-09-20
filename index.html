@@ -562,8 +562,6 @@ footer {
             border: 1px solid #ccc;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        /* Style for the close button */
         .close {
             float: right;
             cursor: pointer;
@@ -585,117 +583,29 @@ footer {
             font-size: 24px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
-      body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header .logo img {
-            width: 100px;
-            height: auto;
-        }
-
-        /* Hamburger Menu Styles */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            background-color: white;
-            height: 3px;
-            width: 25px;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
-        /* Menu Styles */
-        .menu {
-            display: none;
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #007BFF;
-            width: 200px;
-        }
-
-        .menu li {
-            border-bottom: 1px solid #ddd;
-        }
-
-        .menu li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .menu li a:hover {
-            background-color: #0056b3;
-        }
-
-        /* Show menu when hamburger is clicked */
-        .menu.show {
-            display: block;
-        }
-
-        /* Media Queries */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-        }
  </style>
 </head>
 <body>
    <header>
-        <div class="logo">
-            <img src="logo.jpeg" alt="6Seasons Organic Logo">
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul class="menu">
-            <li><a href="#index-section">Home</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropbtn">About Us</a>
-                <div class="dropdown-content">
-                   <a href="#about-section">6 Seasons</a>
-                   <a href="#our-story">Our Story</a>
-                   <a href="#our-values">Our Values</a>
-                   <a href="#meet-the-team">Meet Our Team</a>
-                </div>
-            </li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="products.html">Products</a></li>
-            <li><a href="https://6seasonsorganic.blogspot.com/2023/11/6seasons-organic.html">Our Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="cart.html">Shopping cart</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        </ul>
-    </header>
+      <div class="logo">
+         <img src="logo.jpeg" alt="6 Seasons Organic Logo">
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+         <div></div>
+         <div></div>
+         <div></div>
+      </div>
+      <ul class="menu" id="menu">
+         <li><a href="#index-section">Home</a></li>
+         <li><a href="#about-section">About Us</a></li>
+         <li><a href="services.html">Services</a></li>
+         <li><a href="products.html">Products</a></li>
+         <li><a href="https://6seasonsorganic.blogspot.com/2023/11/6seasons-organic.html">Our Blog</a></li>
+         <li><a href="contact.html">Contact</a></li>
+         <li><a href="cart.html">Shopping Cart</a></li>
+      </ul>
+   </header>
+
     <div class="container1">
         <img src="bckg.jpeg" alt="Background" class="background-image" height="200px" width="1800px">
     </div>
@@ -1125,9 +1035,9 @@ footer {
         }
     }
    function toggleMenu() {
-            var menu = document.querySelector('.menu');
-            menu.classList.toggle('show');
-        }
+         var menu = document.getElementById('menu');
+         menu.classList.toggle('show');
+      }
 </script>
    <script type="application/ld+json">
 {
